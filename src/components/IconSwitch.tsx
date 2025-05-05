@@ -1,14 +1,12 @@
-import { icon, onSwitch } from './src/components/Store';
+import React from 'react';
 
-type iconProps = {
+type IconSwitchProps = {
   icon: 'view_list' | 'view_module';
   onSwitch: () => void;
 };
 
-export const IconSwitch = ({ icon, onSwitch }: iconProps) => {
-  return (
-      <button className={`px-4 py-2`} onClick={() => onSwitch()}>
-      {icon ? 'view_list' : 'view_module'}
-      </button>
-  );
-};
+export const IconSwitch: React.FC<IconSwitchProps> = ({ icon, onSwitch }) => (
+  <button onClick={onSwitch}>
+    <span className="material-icons text-5xl text-gray-700">{icon}</span>
+  </button>
+);
