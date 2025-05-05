@@ -1,21 +1,19 @@
 import { useStore } from './components/Store';
-import { IconSwitch, IconViewType } from './components/IconSwitch';
-import { useState } from 'react';
+import { IconSwitch } from './components/IconSwitch';
+import { CardsView } from './components/CardsView';
+import { ListView } from './components/ListView';
 
 export const App = () => {
-  useStore();
-
-  const [currentView, setCurrentView] = useState<IconViewType>('view_list');
-
-  const handleSwitch = () => {
-    setCurrentView((prev) => (prev === 'view_list' ? 'view_module' : 'view_list'));
-  };
+  const { icon, onSwitch, viewMode, products } = useStore();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-end mb-8">
-        <IconSwitch icon={currentView} onSwitch={handleSwitch} />
+        <IconSwitch icon={icon} onSwitch={onSwitch} />
       </div>
+      {viewMode === 'cards' 
+        ? <CardsView cards={products} /> 
+        : <ListView items={products} />}
     </div>
   );
 };

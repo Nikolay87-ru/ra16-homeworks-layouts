@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 type ViewMode = 'cards' | 'list';
+type IconViewType = 'view_list' | 'view_module';
 
 const products = [{
   name: "Nike Metcon 2",
@@ -42,7 +43,7 @@ export const useStore = () => {
   };
 
   return {
-    icon: viewMode === 'cards' ? 'view_list' : 'view_module',
+    icon: (viewMode === 'cards' ? 'view_list' : 'view_module') as IconViewType,
     onSwitch: toggleView,
     viewMode,
     products
