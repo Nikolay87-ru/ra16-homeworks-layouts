@@ -1,7 +1,9 @@
 import React from 'react';
 
+export type IconViewType = 'view_list' | 'view_module';
+
 type IconSwitchProps = {
-  icon: 'view_list' | 'view_module';
+  icon: IconViewType;
   onSwitch: () => void;
 };
 
